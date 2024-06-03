@@ -82,9 +82,9 @@ namespace SoftDeleteSketch.Migrations
                 columns: new[] { "Id", "DeletionDateUtc", "IsDeleted", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("b1810132-67f1-44c6-b214-3fe7e2baacb8"), null, false, "Person 2" },
-                    { new Guid("b1810132-67f1-45d2-a02a-3747213080a2"), null, false, "Person 3" },
-                    { new Guid("b1810132-67f1-4d6d-809e-a17e581d52fc"), null, false, "Person 1" }
+                    { new Guid("b18400c7-68f7-45a7-ba0a-3eeeac9bb969"), null, false, "Person 3" },
+                    { new Guid("b18400c7-68f7-49ca-9c4b-4b8dbea62eee"), null, false, "Person 2" },
+                    { new Guid("b18400c7-68f7-4f0c-b667-f8850e942a48"), null, false, "Person 1" }
                 });
 
             migrationBuilder.InsertData(
@@ -92,12 +92,12 @@ namespace SoftDeleteSketch.Migrations
                 columns: new[] { "Id", "DeletionDateUtc", "IsDeleted", "Name", "OwnerId" },
                 values: new object[,]
                 {
-                    { new Guid("b1810132-67f1-441d-92cc-dc38f30a52c1"), null, false, "Blog 3", new Guid("b1810132-67f1-45d2-a02a-3747213080a2") },
-                    { new Guid("b1810132-67f1-4466-ad34-01c309274adc"), null, false, "Blog 6", new Guid("b1810132-67f1-45d2-a02a-3747213080a2") },
-                    { new Guid("b1810132-67f1-4824-aa0f-62c53f1ed891"), null, false, "Blog 2", new Guid("b1810132-67f1-44c6-b214-3fe7e2baacb8") },
-                    { new Guid("b1810132-67f1-4b14-bb91-d877349f1bd1"), null, false, "Blog 1", new Guid("b1810132-67f1-4d6d-809e-a17e581d52fc") },
-                    { new Guid("b1810132-67f1-4dd1-9dfb-a43dbb7e529c"), null, false, "Blog 4", new Guid("b1810132-67f1-4d6d-809e-a17e581d52fc") },
-                    { new Guid("b1810132-67f1-4f70-bf11-76aa5505ea76"), null, false, "Blog 5", new Guid("b1810132-67f1-44c6-b214-3fe7e2baacb8") }
+                    { new Guid("b18400c7-68f7-4763-abc3-acff4006d0bb"), null, false, "Blog 5", new Guid("b18400c7-68f7-49ca-9c4b-4b8dbea62eee") },
+                    { new Guid("b18400c7-68f7-47ee-b7df-af900a550471"), null, false, "Blog 3", new Guid("b18400c7-68f7-45a7-ba0a-3eeeac9bb969") },
+                    { new Guid("b18400c7-68f7-4885-84a2-8c619355244c"), null, false, "Blog 1", new Guid("b18400c7-68f7-4f0c-b667-f8850e942a48") },
+                    { new Guid("b18400c7-68f7-49f8-a59e-1c43b8c22e77"), null, false, "Blog 4", new Guid("b18400c7-68f7-4f0c-b667-f8850e942a48") },
+                    { new Guid("b18400c7-68f7-4a9b-a636-5a069471fd56"), null, false, "Blog 6", new Guid("b18400c7-68f7-45a7-ba0a-3eeeac9bb969") },
+                    { new Guid("b18400c7-68f7-4fdf-9b4d-c4409a1724d9"), null, false, "Blog 2", new Guid("b18400c7-68f7-49ca-9c4b-4b8dbea62eee") }
                 });
 
             migrationBuilder.InsertData(
@@ -105,12 +105,12 @@ namespace SoftDeleteSketch.Migrations
                 columns: new[] { "Id", "AuthorId", "BlogId", "Content", "DeletionDateUtc", "IsDeleted", "Title" },
                 values: new object[,]
                 {
-                    { new Guid("b1810132-67f1-41a6-b7c3-38ce409f308a"), new Guid("b1810132-67f1-44c6-b214-3fe7e2baacb8"), new Guid("b1810132-67f1-4dd1-9dfb-a43dbb7e529c"), "Content 2", null, false, "Post 5" },
-                    { new Guid("b1810132-67f1-42fe-9918-67320f46c1eb"), new Guid("b1810132-67f1-44c6-b214-3fe7e2baacb8"), new Guid("b1810132-67f1-4dd1-9dfb-a43dbb7e529c"), "Content 2", null, false, "Post 2" },
-                    { new Guid("b1810132-67f1-4e4a-bf26-fa20f9e68629"), new Guid("b1810132-67f1-4d6d-809e-a17e581d52fc"), new Guid("b1810132-67f1-4b14-bb91-d877349f1bd1"), "Content 1", null, false, "Post 4" },
-                    { new Guid("b1810132-67f1-4ecb-b27d-2b545578b274"), new Guid("b1810132-67f1-45d2-a02a-3747213080a2"), new Guid("b1810132-67f1-4824-aa0f-62c53f1ed891"), "Content 3", null, false, "Post 3" },
-                    { new Guid("b1810132-67f1-4ee0-a6cf-884d33a84dc1"), new Guid("b1810132-67f1-4d6d-809e-a17e581d52fc"), new Guid("b1810132-67f1-4b14-bb91-d877349f1bd1"), "Content 1", null, false, "Post 1" },
-                    { new Guid("b1810132-67f1-4f3f-be39-4088c4b4a9a8"), new Guid("b1810132-67f1-45d2-a02a-3747213080a2"), new Guid("b1810132-67f1-4824-aa0f-62c53f1ed891"), "Content 2", null, false, "Post 6" }
+                    { new Guid("b18400c7-68f7-4051-956a-9ad3ad25fc11"), new Guid("b18400c7-68f7-4f0c-b667-f8850e942a48"), new Guid("b18400c7-68f7-4885-84a2-8c619355244c"), "Content 1", null, false, "Post 1" },
+                    { new Guid("b18400c7-68f7-4061-a5bf-5706d1b064a9"), new Guid("b18400c7-68f7-45a7-ba0a-3eeeac9bb969"), new Guid("b18400c7-68f7-47ee-b7df-af900a550471"), "Content 3", null, false, "Post 3" },
+                    { new Guid("b18400c7-68f7-46a7-ab22-949807d4abdf"), new Guid("b18400c7-68f7-45a7-ba0a-3eeeac9bb969"), new Guid("b18400c7-68f7-4a9b-a636-5a069471fd56"), "Content 2", null, false, "Post 6" },
+                    { new Guid("b18400c7-68f7-4713-8267-1f404f0b1a88"), new Guid("b18400c7-68f7-49ca-9c4b-4b8dbea62eee"), new Guid("b18400c7-68f7-4fdf-9b4d-c4409a1724d9"), "Content 2", null, false, "Post 2" },
+                    { new Guid("b18400c7-68f7-4866-ae8d-75d223e75a43"), new Guid("b18400c7-68f7-49ca-9c4b-4b8dbea62eee"), new Guid("b18400c7-68f7-4763-abc3-acff4006d0bb"), "Content 2", null, false, "Post 5" },
+                    { new Guid("b18400c7-68f7-4ed2-883d-52be39aa5d10"), new Guid("b18400c7-68f7-4f0c-b667-f8850e942a48"), new Guid("b18400c7-68f7-49f8-a59e-1c43b8c22e77"), "Content 1", null, false, "Post 4" }
                 });
 
             migrationBuilder.CreateIndex(

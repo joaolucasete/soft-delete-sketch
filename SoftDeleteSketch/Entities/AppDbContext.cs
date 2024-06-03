@@ -36,7 +36,7 @@ namespace SoftDeleteSketch.Entities {
             ArgumentNullException.ThrowIfNull(entity);
             var walker = new CascadeWalker(this);
             await walker.WalkEntitiesSoftDelete(entity);
-            _logger.LogInformation("Were soft deleted {NumFound} entities", walker.NumFound);
+            _logger.LogInformation("soft deleted {NumFound} entities", walker.NumFound);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
@@ -44,7 +44,7 @@ namespace SoftDeleteSketch.Entities {
             // modelBuilder.Entity<Post>()
             //     .Navigation(p => p.Author)
             //     .IsRequired(false);
-            modelBuilder.Entity<Blog>().HasQueryFilter(b => !b.IsDeleted);
+            // modelBuilder.Entity<Blog>().HasQueryFilter(b => !b.IsDeleted);
             // modelBuilder.Entity<Blog>().HasQueryFilter(b => !b.IsDeleted);
             // modelBuilder.Entity<Blog>().HasQueryFilter(b => !b.IsDeleted);
 
@@ -108,35 +108,35 @@ namespace SoftDeleteSketch.Entities {
                     Id = _combProvider.Create(),
                     Title = "Post 4",
                     Content = "Content 1",
-                    BlogId = blogs[0].Id,
+                    BlogId = blogs[1].Id,
                     AuthorId = persons[0].Id
                 },
                 new Post {
                     Id = _combProvider.Create(),
                     Title = "Post 2",
                     Content = "Content 2",
-                    BlogId = blogs[1].Id,
+                    BlogId = blogs[2].Id,
                     AuthorId = persons[1].Id
                 },
                 new Post {
                     Id = _combProvider.Create(),
                     Title = "Post 5",
                     Content = "Content 2",
-                    BlogId = blogs[1].Id,
+                    BlogId = blogs[3].Id,
                     AuthorId = persons[1].Id
                 },
                 new Post {
                     Id = _combProvider.Create(),
                     Title = "Post 3",
                     Content = "Content 3",
-                    BlogId = blogs[2].Id,
+                    BlogId = blogs[4].Id,
                     AuthorId = persons[2].Id
                 },
                 new Post {
                     Id = _combProvider.Create(),
                     Title = "Post 6",
                     Content = "Content 2",
-                    BlogId = blogs[2].Id,
+                    BlogId = blogs[5].Id,
                     AuthorId = persons[2].Id
                 },
             };

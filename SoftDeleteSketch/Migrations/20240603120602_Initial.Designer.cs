@@ -12,7 +12,7 @@ using SoftDeleteSketch.Entities;
 namespace SoftDeleteSketch.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240531183535_Initial")]
+    [Migration("20240603120602_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -54,45 +54,45 @@ namespace SoftDeleteSketch.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b1810132-67f1-4b14-bb91-d877349f1bd1"),
+                            Id = new Guid("b18400c7-68f7-4885-84a2-8c619355244c"),
                             IsDeleted = false,
                             Name = "Blog 1",
-                            OwnerId = new Guid("b1810132-67f1-4d6d-809e-a17e581d52fc")
+                            OwnerId = new Guid("b18400c7-68f7-4f0c-b667-f8850e942a48")
                         },
                         new
                         {
-                            Id = new Guid("b1810132-67f1-4dd1-9dfb-a43dbb7e529c"),
+                            Id = new Guid("b18400c7-68f7-49f8-a59e-1c43b8c22e77"),
                             IsDeleted = false,
                             Name = "Blog 4",
-                            OwnerId = new Guid("b1810132-67f1-4d6d-809e-a17e581d52fc")
+                            OwnerId = new Guid("b18400c7-68f7-4f0c-b667-f8850e942a48")
                         },
                         new
                         {
-                            Id = new Guid("b1810132-67f1-4824-aa0f-62c53f1ed891"),
+                            Id = new Guid("b18400c7-68f7-4fdf-9b4d-c4409a1724d9"),
                             IsDeleted = false,
                             Name = "Blog 2",
-                            OwnerId = new Guid("b1810132-67f1-44c6-b214-3fe7e2baacb8")
+                            OwnerId = new Guid("b18400c7-68f7-49ca-9c4b-4b8dbea62eee")
                         },
                         new
                         {
-                            Id = new Guid("b1810132-67f1-4f70-bf11-76aa5505ea76"),
+                            Id = new Guid("b18400c7-68f7-4763-abc3-acff4006d0bb"),
                             IsDeleted = false,
                             Name = "Blog 5",
-                            OwnerId = new Guid("b1810132-67f1-44c6-b214-3fe7e2baacb8")
+                            OwnerId = new Guid("b18400c7-68f7-49ca-9c4b-4b8dbea62eee")
                         },
                         new
                         {
-                            Id = new Guid("b1810132-67f1-441d-92cc-dc38f30a52c1"),
+                            Id = new Guid("b18400c7-68f7-47ee-b7df-af900a550471"),
                             IsDeleted = false,
                             Name = "Blog 3",
-                            OwnerId = new Guid("b1810132-67f1-45d2-a02a-3747213080a2")
+                            OwnerId = new Guid("b18400c7-68f7-45a7-ba0a-3eeeac9bb969")
                         },
                         new
                         {
-                            Id = new Guid("b1810132-67f1-4466-ad34-01c309274adc"),
+                            Id = new Guid("b18400c7-68f7-4a9b-a636-5a069471fd56"),
                             IsDeleted = false,
                             Name = "Blog 6",
-                            OwnerId = new Guid("b1810132-67f1-45d2-a02a-3747213080a2")
+                            OwnerId = new Guid("b18400c7-68f7-45a7-ba0a-3eeeac9bb969")
                         });
                 });
 
@@ -120,19 +120,19 @@ namespace SoftDeleteSketch.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b1810132-67f1-4d6d-809e-a17e581d52fc"),
+                            Id = new Guid("b18400c7-68f7-4f0c-b667-f8850e942a48"),
                             IsDeleted = false,
                             Name = "Person 1"
                         },
                         new
                         {
-                            Id = new Guid("b1810132-67f1-44c6-b214-3fe7e2baacb8"),
+                            Id = new Guid("b18400c7-68f7-49ca-9c4b-4b8dbea62eee"),
                             IsDeleted = false,
                             Name = "Person 2"
                         },
                         new
                         {
-                            Id = new Guid("b1810132-67f1-45d2-a02a-3747213080a2"),
+                            Id = new Guid("b18400c7-68f7-45a7-ba0a-3eeeac9bb969"),
                             IsDeleted = false,
                             Name = "Person 3"
                         });
@@ -176,54 +176,54 @@ namespace SoftDeleteSketch.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b1810132-67f1-4ee0-a6cf-884d33a84dc1"),
-                            AuthorId = new Guid("b1810132-67f1-4d6d-809e-a17e581d52fc"),
-                            BlogId = new Guid("b1810132-67f1-4b14-bb91-d877349f1bd1"),
+                            Id = new Guid("b18400c7-68f7-4051-956a-9ad3ad25fc11"),
+                            AuthorId = new Guid("b18400c7-68f7-4f0c-b667-f8850e942a48"),
+                            BlogId = new Guid("b18400c7-68f7-4885-84a2-8c619355244c"),
                             Content = "Content 1",
                             IsDeleted = false,
                             Title = "Post 1"
                         },
                         new
                         {
-                            Id = new Guid("b1810132-67f1-4e4a-bf26-fa20f9e68629"),
-                            AuthorId = new Guid("b1810132-67f1-4d6d-809e-a17e581d52fc"),
-                            BlogId = new Guid("b1810132-67f1-4b14-bb91-d877349f1bd1"),
+                            Id = new Guid("b18400c7-68f7-4ed2-883d-52be39aa5d10"),
+                            AuthorId = new Guid("b18400c7-68f7-4f0c-b667-f8850e942a48"),
+                            BlogId = new Guid("b18400c7-68f7-49f8-a59e-1c43b8c22e77"),
                             Content = "Content 1",
                             IsDeleted = false,
                             Title = "Post 4"
                         },
                         new
                         {
-                            Id = new Guid("b1810132-67f1-42fe-9918-67320f46c1eb"),
-                            AuthorId = new Guid("b1810132-67f1-44c6-b214-3fe7e2baacb8"),
-                            BlogId = new Guid("b1810132-67f1-4dd1-9dfb-a43dbb7e529c"),
+                            Id = new Guid("b18400c7-68f7-4713-8267-1f404f0b1a88"),
+                            AuthorId = new Guid("b18400c7-68f7-49ca-9c4b-4b8dbea62eee"),
+                            BlogId = new Guid("b18400c7-68f7-4fdf-9b4d-c4409a1724d9"),
                             Content = "Content 2",
                             IsDeleted = false,
                             Title = "Post 2"
                         },
                         new
                         {
-                            Id = new Guid("b1810132-67f1-41a6-b7c3-38ce409f308a"),
-                            AuthorId = new Guid("b1810132-67f1-44c6-b214-3fe7e2baacb8"),
-                            BlogId = new Guid("b1810132-67f1-4dd1-9dfb-a43dbb7e529c"),
+                            Id = new Guid("b18400c7-68f7-4866-ae8d-75d223e75a43"),
+                            AuthorId = new Guid("b18400c7-68f7-49ca-9c4b-4b8dbea62eee"),
+                            BlogId = new Guid("b18400c7-68f7-4763-abc3-acff4006d0bb"),
                             Content = "Content 2",
                             IsDeleted = false,
                             Title = "Post 5"
                         },
                         new
                         {
-                            Id = new Guid("b1810132-67f1-4ecb-b27d-2b545578b274"),
-                            AuthorId = new Guid("b1810132-67f1-45d2-a02a-3747213080a2"),
-                            BlogId = new Guid("b1810132-67f1-4824-aa0f-62c53f1ed891"),
+                            Id = new Guid("b18400c7-68f7-4061-a5bf-5706d1b064a9"),
+                            AuthorId = new Guid("b18400c7-68f7-45a7-ba0a-3eeeac9bb969"),
+                            BlogId = new Guid("b18400c7-68f7-47ee-b7df-af900a550471"),
                             Content = "Content 3",
                             IsDeleted = false,
                             Title = "Post 3"
                         },
                         new
                         {
-                            Id = new Guid("b1810132-67f1-4f3f-be39-4088c4b4a9a8"),
-                            AuthorId = new Guid("b1810132-67f1-45d2-a02a-3747213080a2"),
-                            BlogId = new Guid("b1810132-67f1-4824-aa0f-62c53f1ed891"),
+                            Id = new Guid("b18400c7-68f7-46a7-ab22-949807d4abdf"),
+                            AuthorId = new Guid("b18400c7-68f7-45a7-ba0a-3eeeac9bb969"),
+                            BlogId = new Guid("b18400c7-68f7-4a9b-a636-5a069471fd56"),
                             Content = "Content 2",
                             IsDeleted = false,
                             Title = "Post 6"
