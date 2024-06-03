@@ -13,7 +13,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(
     options => options
         .UseNpgsql("Host=localhost;Database=SoftDeleteSketch;Username=postgres;Password=Senha!01")
-        .AddInterceptors(new SoftDeleteInterceptor())
 );
 builder.Services.AddPostgreSqlCombGuidWithSqlDateTime();
 builder.Services.AddControllers().AddJsonOptions(

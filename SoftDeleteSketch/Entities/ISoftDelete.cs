@@ -13,14 +13,5 @@ namespace SoftDeleteSketch.Entities {
             IsDeleted = true;
             DeletionDate = DateTimeOffset.Now;
         }
-
-        Task OnSoftDeleteAsync(DbContext context, CancellationToken cancellationToken = default);
-
-        void OnSoftDelete(DbContext context);
-
-        Task LoadRelationsAsync(DbContext context, CancellationToken cancellationToken = default);
-
-        void LoadRelations(DbContext context);
-
     }
 }

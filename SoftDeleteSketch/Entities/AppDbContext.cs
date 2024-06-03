@@ -1,19 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Metadata;
 using RT.Comb;
 using SoftDeleteSketch.Extensions;
+using SoftDeleteSketch.Services;
+using System.Collections;
+using System.Reflection;
 
 namespace SoftDeleteSketch.Entities {
 
     public class AppDbContext : DbContext {
 
+        private readonly HashSet<object> _stopCircularLook = new HashSet<object>();
         private readonly ICombProvider _combProvider;
+        private readonly ILogger<AppDbContext> _logger;
 
         public AppDbContext(
             DbContextOptions<AppDbContext> options,
-            ICombProvider combProvider
+            ICombProvider combProvider,
+            ILogger<AppDbContext> logger
         ) : base(options) {
             _combProvider = combProvider;
+            _logger = logger;
         }
 
         public DbSet<Blog> Blogs { get; set; }
@@ -24,23 +31,13 @@ namespace SoftDeleteSketch.Entities {
 
         // public DbSet<Review> Reviews { get; set; }
 
-        public override EntityEntry Remove(object entity) {
-            return base.Remove(entity);
+        public virtual async Task SoftDeleteAsync<TEntity>(TEntity entity)
+            where TEntity : class, ISoftDelete {
+            ArgumentNullException.ThrowIfNull(entity);
+            var walker = new CascadeWalker(this);
+            await walker.WalkEntitiesSoftDelete(entity);
+            _logger.LogInformation("Were soft deleted {NumFound} entities", walker.NumFound);
         }
-
-        public override EntityEntry<TEntity> Remove<TEntity>(TEntity entity) {
-            var result = base.Remove(entity);
-
-            if (entity is not ISoftDelete softDeleteEntity) {
-                return result;
-            }
-
-            softDeleteEntity.LoadRelations(this);
-            softDeleteEntity.OnSoftDelete(this);
-
-            return result;
-        }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.AddSoftDeleteQueryFilter();
@@ -70,7 +67,12 @@ namespace SoftDeleteSketch.Entities {
                 new Blog {
                     Id = _combProvider.Create(),
                     Name = "Blog 1",
-                    OwnerId = persons[2].Id,
+                    OwnerId = persons[0].Id,
+                },
+                new Blog {
+                    Id = _combProvider.Create(),
+                    Name = "Blog 4",
+                    OwnerId = persons[0].Id,
                 },
                 new Blog {
                     Id = _combProvider.Create(),
@@ -79,8 +81,18 @@ namespace SoftDeleteSketch.Entities {
                 },
                 new Blog {
                     Id = _combProvider.Create(),
+                    Name = "Blog 5",
+                    OwnerId = persons[1].Id,
+                },
+                new Blog {
+                    Id = _combProvider.Create(),
                     Name = "Blog 3",
-                    OwnerId = persons[0].Id,
+                    OwnerId = persons[2].Id,
+                },
+                new Blog {
+                    Id = _combProvider.Create(),
+                    Name = "Blog 6",
+                    OwnerId = persons[2].Id,
                 }
             };
 
@@ -89,8 +101,15 @@ namespace SoftDeleteSketch.Entities {
                     Id = _combProvider.Create(),
                     Title = "Post 1",
                     Content = "Content 1",
-                    BlogId = blogs[2].Id,
-                    AuthorId = persons[2].Id
+                    BlogId = blogs[0].Id,
+                    AuthorId = persons[0].Id
+                },
+                new Post {
+                    Id = _combProvider.Create(),
+                    Title = "Post 4",
+                    Content = "Content 1",
+                    BlogId = blogs[0].Id,
+                    AuthorId = persons[0].Id
                 },
                 new Post {
                     Id = _combProvider.Create(),
@@ -101,10 +120,24 @@ namespace SoftDeleteSketch.Entities {
                 },
                 new Post {
                     Id = _combProvider.Create(),
+                    Title = "Post 5",
+                    Content = "Content 2",
+                    BlogId = blogs[1].Id,
+                    AuthorId = persons[1].Id
+                },
+                new Post {
+                    Id = _combProvider.Create(),
                     Title = "Post 3",
                     Content = "Content 3",
-                    BlogId = blogs[0].Id,
-                    AuthorId = persons[0].Id
+                    BlogId = blogs[2].Id,
+                    AuthorId = persons[2].Id
+                },
+                new Post {
+                    Id = _combProvider.Create(),
+                    Title = "Post 6",
+                    Content = "Content 2",
+                    BlogId = blogs[2].Id,
+                    AuthorId = persons[2].Id
                 },
             };
 

@@ -18,10 +18,7 @@ namespace SoftDeleteSketch.Controllers {
 
         [HttpGet("posts")]
         public IActionResult GetPosts() {
-            var posts = _appDbContext.Posts
-                .Include(p => p.Author)
-                .Include(p => p.Blog)
-                .ToList();
+            var posts = _appDbContext.Posts.IgnoreQueryFilters().ToList();
             return Ok(posts);
         }
 
@@ -33,10 +30,7 @@ namespace SoftDeleteSketch.Controllers {
 
         [HttpGet("persons")]
         public IActionResult GetPersons() {
-            var peoples = _appDbContext.People
-                .Include(p => p.Blogs)
-                .Include(p => p.Posts)
-                .IgnoreQueryFilters().ToList();
+            var peoples = _appDbContext.People.IgnoreQueryFilters().ToList();
             return Ok(peoples);
         }
 
@@ -47,7 +41,19 @@ namespace SoftDeleteSketch.Controllers {
                 return NotFound();
 
             // _appDbContext.Posts.Remove(post);
-            _appDbContext.Remove(post);
+            // _appDbContext.Remove(post);
+            await _appDbContext.SoftDeleteAsync(post);
+            await _appDbContext.SaveChangesAsync();
+            return Ok("Deleted!");
+        }
+        
+        [HttpDelete("delete/blogs/{id::guid}")]
+        public async Task<IActionResult> DeleteBlogs(Guid id) {
+            var blog = await _appDbContext.Blogs.FirstOrDefaultAsync(p => p.Id == id);
+            if (blog == null)
+                return NotFound();
+
+            await _appDbContext.SoftDeleteAsync(blog);
             await _appDbContext.SaveChangesAsync();
             return Ok("Deleted!");
         }
@@ -59,7 +65,7 @@ namespace SoftDeleteSketch.Controllers {
             if (person == null)
                 return NotFound();
 
-            _appDbContext.Remove(person);
+            await _appDbContext.SoftDeleteAsync(person);
             await _appDbContext.SaveChangesAsync();
             return Ok("Deleted!");
         }

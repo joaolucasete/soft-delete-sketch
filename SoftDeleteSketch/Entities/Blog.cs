@@ -17,25 +17,16 @@ namespace SoftDeleteSketch.Entities {
         public bool IsDeleted { get; set; }
 
         #region DeletionDate
-
         [NotMapped]
         public DateTimeOffset? DeletionDate { get; set; }
-
-        public Task OnSoftDeleteAsync(DbContext context, CancellationToken cancellationToken = default) => Task.CompletedTask;
-
-        public void OnSoftDelete(DbContext context) { }
-
-        public Task LoadRelationsAsync(DbContext context, CancellationToken cancellationToken = default) => Task.CompletedTask;
-
-        public void LoadRelations(DbContext context) { }
 
         public DateTime? DeletionDateUtc {
             get => DeletionDate?.UtcDateTime;
             set => DeletionDate = value.HasValue ? new DateTimeOffset(value.Value) : null;
         }
-
         #endregion
 
+        public List<Post> Posts { get; set; }
     }
 
 }
